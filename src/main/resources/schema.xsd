@@ -1,0 +1,105 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="test"
+           targetNamespace="test" elementFormDefault="qualified">
+
+    <xs:element name="Create">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceId" type="xs:string"/>
+                <xs:element name="ServiceType" type="xs:string"/>
+                <xs:element name="CustomerId" type="xs:string"/>
+                <xs:element name="VIPCustomer" type="xs:boolean" minOccurs="0"/>
+                <xs:element name="SubscriptionId" type="xs:string"/>
+                <xs:element name="ServiceDetails" type="tns:ServiceDetails"/>
+                <xs:element name="CustomerDetails" type="tns:CustomerDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Read">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Update">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceId" type="xs:string"/>
+                <xs:element name="ServiceType" type="xs:string"/>
+                <xs:element name="CustomerId" type="xs:string"/>
+                <xs:element name="VIPCustomer" type="xs:boolean" minOccurs="0"/>
+                <xs:element name="SubscriptionId" type="xs:string"/>
+                <xs:element name="ServiceDetails" type="tns:ServiceDetails"/>
+                <xs:element name="CustomerDetails" type="tns:CustomerDetails"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Delete">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ServiceId" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Response">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Status" type="xs:string"/>
+                <xs:element name="Message" type="xs:string" minOccurs="0"/>
+                <xs:element name="ErrorCode" type="xs:int" minOccurs="0"/>
+                <xs:element name="ErrorMessage" type="xs:string" minOccurs="0"/>
+                <xs:element name="Service" type="tns:Service" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:complexType name="Service">
+        <xs:sequence>
+            <xs:element name="ServiceId" type="xs:string"/>
+            <xs:element name="ServiceType" type="xs:string"/>
+            <xs:element name="CustomerId" type="xs:string"/>
+            <xs:element name="VIPCustomer" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="SubscriptionId" type="xs:string"/>
+            <xs:element name="ServiceDetails" type="tns:ServiceDetails"/>
+            <xs:element name="CustomerDetails" type="tns:CustomerDetails"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ServiceDetails">
+        <xs:sequence>
+            <xs:element name="PlanType" type="xs:string"/>
+            <xs:element name="DataLimit" type="xs:string" minOccurs="0"/>
+            <xs:element name="RoamingEnabled" type="xs:boolean" minOccurs="0"/>
+            <xs:element name="AdditionalServices" type="tns:AdditionalServices" minOccurs="0"/>
+            <xs:element name="SpecialOffer" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="AdditionalServices">
+        <xs:sequence>
+            <xs:element name="Service" type="xs:string" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="CustomerDetails">
+        <xs:sequence>
+            <xs:element name="Name" type="xs:string"/>
+            <xs:element name="Address" type="tns:Address" minOccurs="0"/>
+            <xs:element name="ContactNumber" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="Address">
+        <xs:sequence>
+            <xs:element name="Street" type="xs:string" minOccurs="0"/>
+            <xs:element name="City" type="xs:string" minOccurs="0"/>
+            <xs:element name="PostalCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="Country" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
