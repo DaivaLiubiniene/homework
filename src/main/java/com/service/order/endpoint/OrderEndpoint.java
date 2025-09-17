@@ -1,4 +1,4 @@
-package com.service.order.controller;
+package com.service.order.endpoint;
 
 import com.service.order.service.OrderService;
 import com.service.order.soap.Create;
@@ -17,7 +17,7 @@ import static com.service.order.mapper.OrderMapper.toServiceModel;
 
 @Endpoint
 @RequiredArgsConstructor
-public class OrderController {
+public class OrderEndpoint {
 
     public static final String SUCCESS = "Success";
     public static final String NAMESPACE_URI = "test";

@@ -1,4 +1,4 @@
-package com.service.order.controller;
+package com.service.order.endpoint;
 
 import com.service.order.exception.InvalidRequestException;
 import com.service.order.model.Order;
@@ -39,7 +39,7 @@ class OrderControllerTest {
     private OrderService orderService;
 
     @InjectMocks
-    private OrderController orderController;
+    private OrderEndpoint orderEndpoint;
 
     private Jaxb2Marshaller marshaller;
 
@@ -61,7 +61,7 @@ class OrderControllerTest {
 
         doNothing().when(orderService).createService(any(Order.class));
 
-        Response response = orderController.createService(request);
+        Response response = orderEndpoint.createService(request);
 
         assertNotNull(response);
         assertEquals("Success", response.getStatus());
@@ -79,7 +79,7 @@ class OrderControllerTest {
 
         doThrow(mockException).when(orderService).createService(any(Order.class));
 
-        Response response = orderController.createService(request);
+        Response response = orderEndpoint.createService(request);
 
         assertNotNull(response);
         assertEquals("Error", response.getStatus());
@@ -98,7 +98,7 @@ class OrderControllerTest {
 
         when(orderService.getService(any())).thenReturn(order);
 
-        Response response = orderController.getService(request);
+        Response response = orderEndpoint.getService(request);
 
         assertNotNull(response);
         assertEquals("Success", response.getStatus());
@@ -116,7 +116,7 @@ class OrderControllerTest {
 
         doThrow(mockException).when(orderService).getService(anyString());
 
-        Response response = orderController.getService(request);
+        Response response = orderEndpoint.getService(request);
 
         assertNotNull(response);
         assertEquals("Error", response.getStatus());
@@ -135,7 +135,7 @@ class OrderControllerTest {
 
         when(orderService.updateService(any())).thenReturn(order);
 
-        Response response = orderController.updateService(request);
+        Response response = orderEndpoint.updateService(request);
 
         assertNotNull(response);
         assertEquals("Success", response.getStatus());
@@ -153,7 +153,7 @@ class OrderControllerTest {
 
         doThrow(mockException).when(orderService).updateService(any());
 
-        Response response = orderController.updateService(request);
+        Response response = orderEndpoint.updateService(request);
 
         assertNotNull(response);
         assertEquals("Error", response.getStatus());
@@ -170,7 +170,7 @@ class OrderControllerTest {
 
         doNothing().when(orderService).deleteService(anyString());
 
-        Response response = orderController.deleteService(request);
+        Response response = orderEndpoint.deleteService(request);
 
         assertNotNull(response);
         assertEquals("Success", response.getStatus());
@@ -188,7 +188,7 @@ class OrderControllerTest {
 
         doThrow(mockException).when(orderService).deleteService(any());
 
-        Response response = orderController.deleteService(request);
+        Response response = orderEndpoint.deleteService(request);
 
         assertNotNull(response);
         assertEquals("Error", response.getStatus());
