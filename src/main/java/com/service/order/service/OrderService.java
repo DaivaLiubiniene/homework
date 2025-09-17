@@ -48,7 +48,8 @@ public class OrderService {
     public Order updateService(Order order) {
         if (serviceDatabase.containsKey(order.getServiceId())){
             checkContactNumberFormat(order);
-            return serviceDatabase.put(order.getServiceId(), order);
+            serviceDatabase.put(order.getServiceId(), order);
+            return serviceDatabase.get(order.getServiceId());
         } else {
             throw new InvalidRequestException(SERVICE_WITH_ID + order.getServiceId() + NOT_FOUND);
         }
