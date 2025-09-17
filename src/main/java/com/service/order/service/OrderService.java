@@ -16,15 +16,13 @@ public class OrderService {
     public static final String NOT_FOUND = " not found";
     public static final String CONTACT_NUMBER_REGEX = "^\\+\\d{11,15}$";
     public static final String ALREADY_EXISTS = " already exists";
+    public static final String INVALID_CONTACT_NUMBER_FORMAT = "Invalid contact number format";
     private final Map<String, Order> serviceDatabase = new HashMap<>();
 
     public void createService(Order order) {
 
-        if (!order.getCustomerDetails().getContactNumber().matches(CONTACT_NUMBER_REGEX)) {
-            throw new InvalidRequestException("Invalid contact number format");
-        }
-
         if (!serviceDatabase.containsKey(order.getServiceId())){
+            checkContactNumberFormat(order);
             serviceDatabase.put(order.getServiceId(), order);
         } else {
             throw new InvalidRequestException(SERVICE_WITH_ID + order.getServiceId() + ALREADY_EXISTS);
@@ -49,9 +47,16 @@ public class OrderService {
 
     public Order updateService(Order order) {
         if (serviceDatabase.containsKey(order.getServiceId())){
+            checkContactNumberFormat(order);
             return serviceDatabase.put(order.getServiceId(), order);
         } else {
             throw new InvalidRequestException(SERVICE_WITH_ID + order.getServiceId() + NOT_FOUND);
+        }
+    }
+
+    private static void checkContactNumberFormat(Order order) {
+        if (!order.getCustomerDetails().getContactNumber().matches(CONTACT_NUMBER_REGEX)) {
+            throw new InvalidRequestException(INVALID_CONTACT_NUMBER_FORMAT);
         }
     }
 

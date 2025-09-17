@@ -22,6 +22,9 @@ public class OrderController {
     public static final String SUCCESS = "Success";
     public static final String NAMESPACE_URI = "test";
     public static final String ERROR = "Error";
+    public static final String SERVICE_ACTIVATED_SUCCESSFULLY = "Service activated successfully";
+    public static final String SERVICE_UPDATED_SUCCESSFULLY = "Service updated successfully";
+    public static final String SERVICE_DELETED_SUCCESSFULLY = "Service deleted successfully";
 
     private final OrderService orderService;
 
@@ -34,7 +37,7 @@ public class OrderController {
         try {
             orderService.createService(order);
             response.setStatus(SUCCESS);
-            response.setMessage("Service activated successfully");
+            response.setMessage(SERVICE_ACTIVATED_SUCCESSFULLY);
         } catch (Exception e) {
             response.setStatus(ERROR);
             response.setErrorCode(400);
@@ -73,7 +76,7 @@ public class OrderController {
         try {
             var serviceOrder = orderService.updateService(order);
             var service = toServiceModel(serviceOrder);
-            response.setMessage("Service updated successfully");
+            response.setMessage(SERVICE_UPDATED_SUCCESSFULLY);
             response.setStatus(SUCCESS);
             response.setService(service);
         } catch (Exception e) {
@@ -93,10 +96,10 @@ public class OrderController {
         try {
             orderService.deleteService(request.getServiceId());
             response.setStatus(SUCCESS);
-            response.setMessage("Service deleted successfully");
+            response.setMessage(SERVICE_DELETED_SUCCESSFULLY);
         } catch (Exception e) {
             response.setStatus(ERROR);
-            response.setErrorCode(400);
+            response.setErrorCode(404);
             response.setErrorMessage(e.getMessage());
         }
 

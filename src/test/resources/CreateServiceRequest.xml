@@ -1,0 +1,24 @@
+<tel:Create xmlns:tel="test">
+    <tel:ServiceId>007</tel:ServiceId>
+    <tel:ServiceType>MobileDataService</tel:ServiceType>
+    <tel:CustomerId>123456789</tel:CustomerId>
+    <tel:SubscriptionId>987654321</tel:SubscriptionId>
+    <tel:ServiceDetails>
+        <tel:PlanType>5G</tel:PlanType>
+        <tel:RoamingEnabled>true</tel:RoamingEnabled>
+        <tel:AdditionalServices>
+            <tel:Service>MMS</tel:Service>
+            <tel:Service>Voicemail</tel:Service>
+        </tel:AdditionalServices>
+    </tel:ServiceDetails>
+    <tel:CustomerDetails>
+        <tel:Name>John Doe</tel:Name>
+        <tel:Address>
+            <tel:Street>Main Street 1</tel:Street>
+            <tel:City>Joniškis</tel:City>
+            <tel:PostalCode>12345</tel:PostalCode>
+            <tel:Country>Lithuania</tel:Country>
+        </tel:Address>
+        <tel:ContactNumber>+46701234567</tel:ContactNumber>
+    </tel:CustomerDetails>
+</tel:Create>
