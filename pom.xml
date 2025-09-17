@@ -9,9 +9,8 @@
 		<relativePath/>
 	</parent>
 	<groupId>com.order</groupId>
-	<artifactId>mobile</artifactId>
+	<artifactId>service-order</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>mobile</name>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
